@@ -7,6 +7,20 @@
 //recording maximum length. Then do the same thing to the left part and right part if they are larger than the
 //recording maximum length.
 
+//solution 2: dynamical programming:
+ for(int i = 0;i<n;i++)
+ {
+   bool found = false;
+   for(int j = 0;j<i;j++)
+       if(a[i]>a[j])
+       {
+          dp[i] = max(1 + dp[j],dp[i]);
+          found = true;
+       }
+  if(found == false) 
+  	dp[i]= 1;
+ }
+
 void _getMaximumIncSeq(int a[], int n, int& nMaxLen, int& nMaxStart)
 {
 	if (n <= nMaxLen) return;
